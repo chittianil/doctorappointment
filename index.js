@@ -1,54 +1,44 @@
-let buttonElement = document.getElementById("submitBtn");
-let inputEl = document.getElementById("inputEL");
-let listEl = document.getElementById("list");
-let dateEl = document.getElementById("dateEL");
-let problemEl = document.getElementById("problemEl");
-let errorparaEl = document.getElementById("errorpara");
-let errordateEl = document.getElementById("errordate");
-let textareaEl = document.getElementById("textarea");
 
-buttonElement.onclick = () => {
-    let listItem = document.createElement("li");
-    listItem.classList.add("listitem")
-    listEl.appendChild(listItem);
-    
-    
-    
-    if (inputEl.value===""){
-        errorparaEl.textContent="Enter your name"
-       
-    }else{
-        errorparaEl.textContent=""
-        let namePara = document.createElement("p")
-        namePara.textContent = "Name:" + inputEl.value
-        inputEl.value = ""
-        listItem.appendChild(namePara)
-    }
-    
-    if (dateEl.value===""){
-        errordateEl.textContent="Enter your slot"
-       
-    }else{
-        errordateEl.textContent=""
-        let para = document.createElement("p");
-        para.textContent = "Date:" + dateEl.value;
-        dateEl.value = ""
-        listItem.appendChild(para);
-    }   
-    
+let bgContainerEl=document.createElement("div");
+bgContainerEl.classList.add("bg-container")
+document.body.appendChild(bgContainerEl)
 
-    if (problemEl.value===""){
-        textareaEl.textContent="Enter your problem"
-       
-    }else{
-        textareaEl.textContent=""
-        let problemPara = document.createElement("p")
-        problemPara.textContent = "Problem :" + problemEl.value
-        problemEl.value = ""
-        listItem.appendChild(problemPara)
-       
-    }   
+let headingEl=document.createElement("h1")
+
+headingEl.classList.add("heading");
+headingEl.textContent="Grocery List";
+bgContainerEl.appendChild(headingEl);
+
+let listContainerEl=document.createElement("ul");
+listContainerEl.classList.add("list-container");
+bgContainerEl.appendChild(listContainerEl);
 
 
+let groceryItems= ["Milk","chocohips","Tomoto sauce","peanut butter","Noodles",
+"cup cakes"];
 
+
+for (let groceryItem of groceryItems){
+let listEl=document.createElement("li");
+listEl.textContent=groceryItem;
+listContainerEl.appendChild(listEl);
 }
+
+let inputEl=document.createElement("input");
+inputEl.type="checkbox"
+inputEl.id="myCheckbox"
+bgContainerEl.appendChild(inputEl)
+
+let labelEl=document.createElement("label");
+labelEl.classList.add("delivery-text")
+labelEl.textContent="Need Home Delievery";
+labelEl.setAttribute("for","myCheckbox");
+bgContainerEl.appendChild(labelEl);
+
+let breakEl=document.createElement("br")
+bgContainerEl.appendChild(breakEl)
+
+let buttonEl=document.createElement("button");
+buttonEl.classList.add("btn","btn-primary");
+buttonEl.textContent="Proceed to Pay";
+bgContainerEl.appendChild(buttonEl);
